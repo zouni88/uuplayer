@@ -12,6 +12,7 @@ export default function EmptyState({ onOpenFiles, onOpenUrl }: Props) {
   return (
     <div className="empty">
       <div className="empty-inner">
+        <img className="empty-icon" src="/logo.png" alt="iPlayer" draggable={false} />
         <div className="empty-logo">
           i<span>Player</span>
         </div>

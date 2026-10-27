@@ -321,7 +321,16 @@ textarea {
 .empty-inner {
   text-align: center;
 }
+.empty-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
+  box-shadow: 0 0 40px rgba(56, 225, 255, 0.35);
+  user-select: none;
+  -webkit-user-drag: none;
+}
 .empty-logo {
+  margin-top: 12px;
   font-size: 46px;
   font-weight: 200;
   letter-spacing: 2px;
