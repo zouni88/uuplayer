@@ -4,3 +4,7 @@ frontend_player/src-tauri/mpv/
 # OS / editor
 Thumbs.db
 Desktop.ini
+.env
+# build logs / tool artifacts
+frontend_player/build_log*.txt
+.trae-html-share-packages/

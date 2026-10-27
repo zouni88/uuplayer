@@ -21,6 +21,7 @@ interface Props {
   playlistOpen: boolean;
   onTogglePlaylist: () => void;
   onToggleFullscreen: () => void;
+  onDragChange: (dragging: boolean) => void;
 }
 
 /** 底部控制条：进度条 + 播放按钮 + 倍速 + 音量 + 列表 + 全屏 */
@@ -30,6 +31,7 @@ export default function ControlBar({
   playlistOpen,
   onTogglePlaylist,
   onToggleFullscreen,
+  onDragChange,
 }: Props) {
   const p = usePlayer();
   const barRef = useRef<HTMLDivElement>(null);
@@ -52,6 +54,7 @@ export default function ControlBar({
         ref={barRef}
         onPointerDown={(e) => {
           dragging.current = true;
+          onDragChange(true);
           (e.currentTarget as Element).setPointerCapture(e.pointerId);
           if (p.duration > 0) p.seekTo(ratio(e) * p.duration);
         }}
@@ -62,7 +65,12 @@ export default function ControlBar({
         }}
         onPointerUp={(e) => {
           dragging.current = false;
+          onDragChange(false);
           (e.currentTarget as Element).releasePointerCapture(e.pointerId);
+        }}
+        onPointerCancel={() => {
+          dragging.current = false;
+          onDragChange(false);
         }}
         onPointerLeave={() => setHover(null)}
       >

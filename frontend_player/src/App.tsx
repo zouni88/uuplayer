@@ -36,20 +36,25 @@ function Player() {
   const [fullscreen, setFullscreen] = useState(false);
 
   const hideTimer = useRef<number | undefined>(undefined);
-  const busy = useRef({ hover: false, menu: false, url: false, list: false });
+  const busy = useRef({ hover: false, menu: false, url: false, list: false, drag: false });
   busy.current.menu = !!menu;
   busy.current.url = urlOpen;
   busy.current.list = playlistOpen;
 
-  // 鼠标移动显示 UI，播放中 2.6s 后自动隐藏
-  const showUi = useCallback(() => {
-    setUiVisible(true);
+  // 延时后隐藏 UI；若鼠标仍悬停在控制条/拖拽进度/有弹层则保持显示
+  const hideUi = useCallback((delay: number) => {
     window.clearTimeout(hideTimer.current);
     hideTimer.current = window.setTimeout(() => {
       const b = busy.current;
-      if (!b.hover && !b.menu && !b.url && !b.list) setUiVisible(false);
-    }, 2600);
+      if (!b.hover && !b.menu && !b.url && !b.list && !b.drag) setUiVisible(false);
+    }, delay);
   }, []);
+
+  // 鼠标移动显示 UI，播放中 2.6s 后自动隐藏
+  const showUi = useCallback(() => {
+    setUiVisible(true);
+    hideUi(2600);
+  }, [hideUi]);
 
   // 视频宿主窗口铺满整个窗口（物理像素）
   useEffect(() => {
@@ -182,6 +187,7 @@ function Player() {
     <div
       className={'root' + (uiVisible ? '' : ' ui-cursor-hidden')}
       onMouseMove={showUi}
+      onMouseLeave={() => hideUi(260)} // 鼠标移出窗口立即隐藏（对齐 QQ影音）
       onDoubleClick={toggleFs}
       onWheel={onWheel}
       onContextMenu={(e) => {
@@ -196,7 +202,10 @@ function Player() {
       <div
         className="ui-bottom"
         onMouseEnter={() => (busy.current.hover = true)}
-        onMouseLeave={() => (busy.current.hover = false)}
+        onMouseLeave={() => {
+          busy.current.hover = false;
+          hideUi(260); // 鼠标离开控制条后很快消失（对齐 QQ影音）
+        }}
       >
         <ControlBar
           hidden={!uiVisible}
@@ -204,6 +213,7 @@ function Player() {
           playlistOpen={playlistOpen}
           onTogglePlaylist={() => setPlaylistOpen((v) => !v)}
           onToggleFullscreen={toggleFs}
+          onDragChange={(d) => (busy.current.drag = d)}
         />
       </div>
 
