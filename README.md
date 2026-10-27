@@ -1,6 +1,40 @@
 # uuplayer
 
-一款参照 QQ影音 设计的 Windows 本地视频播放器，界面简洁、支持全格式视频与音频播放（含网络流），纯本地离线应用，无任何后端依赖。
+<div align="center">
+
+**参照 QQ影音 设计的 Windows 本地视频播放器** —— 界面简洁、全格式视频音频通吃（含网络流），纯本地离线运行，无广告、无后端依赖。
+
+[![Release](https://img.shields.io/github/v/release/zouni88/uuplayer)](https://github.com/zouni88/uuplayer/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-5b8cff)](https://github.com/zouni88/uuplayer/releases)
+[![License](https://img.shields.io/github/license/zouni88/uuplayer)](./LICENSE)
+[![Stars](https://img.shields.io/github/stars/zouni88/uuplayer?style=social)](https://github.com/zouni88/uuplayer/stargazers)
+
+**[下载最新版](https://github.com/zouni88/uuplayer/releases)** · **[在线预览](https://zouni88.github.io/uuplayer/)** · **[报告问题](https://github.com/zouni88/uuplayer/issues)**
+
+<img src="docs/assets/screenshot-main_1588x882.png" alt="uuplayer 主界面实机截图" width="720">
+
+<sup>*实机截图：自绘控制栏 · 实时中文字幕 · mpv 硬解渲染*</sup>
+
+</div>
+
+## 为什么做它
+
+市面上的播放器要么广告多、要么越来越重。uuplayer 想找回当年 QQ影音 那种"打开 → 播放 → 关掉"的纯粹体验：**解码交给 mpv，系统集成交给 Rust，界面交给 React**，各自只做擅长的事。
+
+## 功能特性
+
+| | |
+|---|---|
+| 🎬 **全格式通吃** | MP4 / MKV / AVI / FLV / WMV / MOV，视频音频一把抓，解码全部由内置 FFmpeg 完成，免装解码器 |
+| 🌐 **网络流直连** | 贴上 URL 直接播，HLS、RTSP 等主流流媒体协议原生支持 |
+| ⚡ **硬解加速** | 默认 `--hwdec=auto-safe` 硬件解码，高码率 4K 也流畅省电 |
+| 💬 **音轨字幕自由切** | 多音轨 / 字幕轨一键切换，外挂字幕模糊自动匹配（`--sub-auto=fuzzy`） |
+| 📋 **批量导入与记录** | 文件 / 文件夹多选批量导入，播放列表抽屉 + 最近播放记录 |
+| 📸 **一键截图** | 名场面随手截，画面即所得 |
+
+## 下载
+
+前往 [GitHub Releases](https://github.com/zouni88/uuplayer/releases) 下载最新安装包，Windows 10/11 免安装解码器，解压即用。
 
 ## 技术架构
 
@@ -48,12 +82,10 @@ npm run tauri dev
 npm run tauri build
 ```
 
-## 功能特性
+## 参与贡献
 
-- 打开文件 / 打开文件夹批量导入（两个独立入口，支持多选）
-- 播放/暂停、进度拖拽、音量、倍速、画面截图
-- 音轨 / 字幕轨切换，外挂字幕自动匹配（`--sub-auto=fuzzy`）
-- 播放列表抽屉、最近播放记录
-- URL 网络流播放（HLS、RTSP 等）
-- 硬解加速（`--hwdec=auto-safe`）
-- 自绘标题栏与控制栏，简洁现代化界面
+欢迎 [提 issue](https://github.com/zouni88/uuplayer/issues) 反馈问题与建议；觉得不错的话，点个 [Star ⭐](https://github.com/zouni88/uuplayer/stargazers) 是对项目最好的支持。
+
+## License
+
+[Apache-2.0](./LICENSE) · 参照经典 QQ影音 体验设计，致敬那个干净纯粹的播放器时代。
