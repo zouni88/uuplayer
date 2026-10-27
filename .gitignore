@@ -1,0 +1,6 @@
+# mpv runtime binaries (third-party, ~101MB, download separately)
+frontend_player/src-tauri/mpv/
+
+# OS / editor
+Thumbs.db
+Desktop.ini
