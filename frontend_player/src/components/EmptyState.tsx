@@ -12,9 +12,9 @@ export default function EmptyState({ onOpenFiles, onOpenUrl }: Props) {
   return (
     <div className="empty">
       <div className="empty-inner">
-        <img className="empty-icon" src="/logo.png" alt="iPlayer" draggable={false} />
+        <img className="empty-icon" src="/logo.png" alt="uuplayer" draggable={false} />
         <div className="empty-logo">
-          i<span>Player</span>
+          u<span>uplayer</span>
         </div>
         <p>将视频文件或文件夹拖到窗口即可播放</p>
         <div className="empty-btns">

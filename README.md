@@ -1,4 +1,4 @@
-# iPlayer
+# uuplayer
 
 一款参照 QQ影音 设计的 Windows 本地视频播放器，界面简洁、支持全格式视频与音频播放（含网络流），纯本地离线应用，无任何后端依赖。
 
@@ -18,7 +18,7 @@
 ## 目录结构
 
 ```
-iPlayer/
+uuplayer/
 └── frontend_player/              # Tauri 应用（前端 + 后端）
     ├── src/                      # React 前端
     │   ├── components/           # 标题栏、控制栏、OSD、播放列表抽屉、右键菜单等 UI 组件

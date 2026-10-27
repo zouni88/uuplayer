@@ -19,7 +19,7 @@ export default function TitleBar({ hidden }: { hidden: boolean }) {
   }, [win]);
 
   const current = playlist[playlistPos];
-  const label = title || current?.title || current?.filename || 'iPlayer';
+  const label = title || current?.title || current?.filename || 'uuplayer';
 
   return (
     <div className={'titlebar' + (hidden ? ' ui-hide' : '')} data-tauri-drag-region>
